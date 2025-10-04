@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { authService } from "../appwrite/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { login } from "../store/authSlice";
+import { login } from "../store/AuthSlice";
 import { useSelector } from "react-redux";
 function AuthLayout({ children }) {
   const navigate = useNavigate();
@@ -11,8 +11,8 @@ function AuthLayout({ children }) {
   const authStatus = useSelector((state) => state.Auth.isLoggedIn);
   useEffect(() => {
     setLoader(true);
-    if(!authStatus){
-        navigate("/");
+    if (!authStatus) {
+      navigate("/");
     }
     setLoader(false);
   }, []);

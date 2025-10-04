@@ -8,6 +8,8 @@ function Feature() {
         className="text-white py-20 text-center shadow-md"
         style={{
           background: "linear-gradient(to right, #3D52A0, #7091E6)",
+          borderBottomLeftRadius: "1rem",
+          borderBottomRightRadius: "1rem",
         }}
       >
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
@@ -126,6 +128,8 @@ function Feature() {
         className="text-white text-center py-16 shadow-inner"
         style={{
           background: "linear-gradient(to right, #3D52A0, #7091E6)",
+          borderTopLeftRadius: "1rem",
+          borderTopRightRadius: "1rem",
         }}
       >
         <h2 className="text-3xl font-bold mb-4">Ready to Take Action?</h2>

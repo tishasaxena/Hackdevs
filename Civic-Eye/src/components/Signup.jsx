@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { authService } from "../appwrite/auth";
 import { useDispatch } from "react-redux";
-import { login } from "../store/authSlice";
+import { login } from "../store/AuthSlice";
 
 export default function Signup() {
   const navigate = useNavigate();
