@@ -64,7 +64,7 @@ export default function AllIssues() {
         const fetchIsssues = async () => {
             try {
                 const response = await appwriteService.ListIssues();
-                console.log(response);
+
                 if (response.documents.length > 0) {
                     setIssues(response.documents);
                 }
