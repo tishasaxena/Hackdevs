@@ -84,6 +84,74 @@ export class Services {
       console.error("Error deleting user:", error);
     }
   }
+
+  async CreateIssue(
+    IssueId,
+    { title, description, status, location, severity, upvotes }
+  ) {
+    try {
+      return await this.databases.createDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionIdIssues,
+        IssueId,
+        {
+          title,
+          description,
+          status,
+          location,
+          severity,
+          upvotes,
+        }
+      );
+    } catch (error) {
+      console.error("Error creating issue:", error);
+    }
+  }
+
+  async UpdateIssue(
+    IssueId,
+    { title, description, status, location, severity }
+  ) {
+    try {
+      return await this.databases.updateDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionIdIssues,
+        IssueId,
+        {
+          title,
+          description,
+          status,
+          location,
+          severity,
+        }
+      );
+    } catch (error) {
+      console.error("Error updating issue:", error);
+    }
+  }
+
+  async GetIssue(IssueId) {
+    try {
+      return await this.databases.getDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionIdIssues,
+        IssueId
+      );
+    } catch (error) {
+      console.error("Error fetching issue:", error);
+    }
+  }
+
+  async ListIssues() {
+    try {
+      return await this.databases.listDocuments(
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionIdIssues
+      );
+    } catch (error) {
+      console.error("Error listing issues:", error);
+    }
+  }
 }
 
 export const appwriteService = new Services();

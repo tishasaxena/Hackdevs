@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { authService } from "../appwrite/auth";
 import { useNavigate } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
-import { login } from "../store/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../store/AuthSlice";
 import { set } from "react-hook-form";
 
 function Home() {
@@ -122,7 +122,7 @@ console.log("User data in Home:", user);
           Be part of the change. Together, let’s make our cities safer, cleaner,
           and better managed.
         </p>
-        {authStatus ?  (
+        {authStatus ? (
           <Link
             to='/report'
             className="bg-yellow-400 text-blue-900 px-8 py-4 rounded-lg font-bold shadow hover:bg-yellow-500 transition"
@@ -135,7 +135,7 @@ console.log("User data in Home:", user);
           >
             Get Started
           </Link>
-          )
+        )
         }
       </section>
     </main>
