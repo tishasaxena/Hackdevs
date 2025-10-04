@@ -8,9 +8,9 @@ import { login } from "../store/AuthSlice";
 import { set } from "react-hook-form";
 
 function Home() {
-const authStatus=useSelector((state)=>state.Auth.isLoggedIn);
-const user=useSelector((state)=>state.Auth.user);
-console.log("User data in Home:", user);
+  const authStatus = useSelector((state) => state.Auth.isLoggedIn);
+  const user = useSelector((state) => state.Auth.user);
+  console.log("User data in Home:", user);
   return (
     <main className="flex-grow">
       {/* Hero Section */}

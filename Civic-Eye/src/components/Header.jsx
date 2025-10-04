@@ -44,12 +44,22 @@ function Header() {
             Features
           </Link>
           <Link
-            to="#about"
+            to="/issues"
             className="transition-colors duration-200"
             style={{ color: "#EDE8F5" }}
           >
-            About
+            Issues
           </Link>
+          {isLoggedIn && (
+            <Link
+              to="/report"
+              className="transition-colors duration-200"
+              style={{ color: "#EDE8F5" }}
+            >
+              Report
+            </Link>
+          )}
+
           <Link
             to="#contact"
             className="transition-colors duration-200"
@@ -70,6 +80,7 @@ function Header() {
 
         {/* Auth Buttons */}
         <div className="flex items-center gap-4">
+          <Logout />
           {!isLoggedIn ? (
             <Link
               to="/"
@@ -78,7 +89,7 @@ function Header() {
               Login
             </Link>
           ) : (
-            <Logout />
+            null
           )}
         </div>
         {/* Mobile Menu */}
