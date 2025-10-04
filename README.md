@@ -30,14 +30,21 @@ A **community-driven civic issue reporting platform** built with **Vite + React 
 
 ---
 
-## 📸 Screenshots
+## ⚙️ Installation & Setup
 
-| Home Page | Reported Issues | User Profile |
-|-----------|----------------|--------------|
-| ![Home](docs/screenshots/home.png) | ![Issues](docs/screenshots/issues.png) | ![Profile](docs/screenshots/profile.png) |
-
-
-
+### 1. Clone the Repository
+```bash
+git clone https://github.com/tishasaxena/Hackdevs.git
+cd Civic-Eye
+```
+### 2. Install the dependencies
+```bash
+npm install
+```
+### 3. Run the project
+```bash
+npm run dev
+```
 ---
 
 
