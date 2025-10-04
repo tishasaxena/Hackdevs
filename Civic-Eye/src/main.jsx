@@ -60,13 +60,11 @@ const router = createBrowserRouter([
         element: <AuthLayout><Report /></AuthLayout>,
       },
       {
-        path:'/profile',
-        element:<AuthLayout><Profile/></AuthLayout>
+
+        path: '/profile',
+        element: <AuthLayout><Profile /></AuthLayout>
       },
-      {
-        path: '/view-issues',
-        element: <AuthLayout><AllIssues /></AuthLayout>,
-      }
+
     ]
   }
 ])
