@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { authService } from "../appwrite/auth";
 import { useDispatch } from "react-redux";
 import { login } from "../store/AuthSlice";
-
+import { appwriteService } from "../appwrite/configure";
 export default function Signup() {
   const navigate = useNavigate();
   const dispatch = useDispatch();

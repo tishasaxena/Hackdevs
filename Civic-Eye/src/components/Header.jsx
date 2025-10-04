@@ -59,6 +59,24 @@ function Header() {
           </Link>
           {isLoggedIn && (
             <Link
+              to="/report"
+              className="transition-colors duration-200"
+              style={{ color: "#EDE8F5" }}
+            >
+              Report Issue
+            </Link>
+          )}
+          {isLoggedIn && (
+            <Link
+              to="/view-issues"
+              className="transition-colors duration-200"
+              style={{ color: "#EDE8F5" }}
+            >
+              View Issues
+            </Link>
+          )}
+          {isLoggedIn && (
+            <Link
               to="/profile"
               className="transition-colors duration-200"
               style={{ color: "#EDE8F5" }}

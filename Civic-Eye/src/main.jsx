@@ -14,6 +14,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import { Provider } from 'react-redux'
 import Store,{persistor} from './store/Store'
 import AuthLayout from './components/AuthLayout.jsx'
+import ViewIssues from './pages/ViewIssues.jsx'
 import { PersistGate } from 'redux-persist/integration/react'
 import Report from './pages/Report.jsx'
 const router = createBrowserRouter([
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path:'/profile',
         element:<AuthLayout><Profile/></AuthLayout>
+      },
+      {
+        path: '/view-issues',
+        element: <AuthLayout><ViewIssues /></AuthLayout>,
       }
     ]
   }
