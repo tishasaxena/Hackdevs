@@ -44,13 +44,6 @@ function Header() {
             Features
           </Link>
           <Link
-            to="#about"
-            className="transition-colors duration-200"
-            style={{ color: "#EDE8F5" }}
-          >
-            About
-          </Link>
-          <Link
             to="#contact"
             className="transition-colors duration-200"
             style={{ color: "#EDE8F5" }}
@@ -96,7 +89,7 @@ function Header() {
               Login
             </Link>
           ) : (
-            <Logout />
+             <Logout />
           )}
         </div>
         {/* Mobile Menu */}

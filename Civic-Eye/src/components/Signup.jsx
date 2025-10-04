@@ -46,27 +46,27 @@ export default function Signup() {
   }, [passwordValue, confirmPasswordValue, trigger]);
 
   const createAccount = async (data) => {
-  setLoading(true);
-  setError("");
-  try {
-    const userData = await authService.createAccount(data);
-     const profile=await authService.getCurrentAccount();
-    if (userData) {
-         await appwriteService.createUser(profile.$id, {
-        name: data.name,
-        profileImageId: null,
-        state: "",
-        city: "",
-        issuesReported: 0,
-      });
-      dispatch(login(profile));
-      navigate("/home");
+    setLoading(true);
+    setError("");
+    try {
+      const userData = await authService.createAccount(data);
+      const profile = await authService.getCurrentAccount();
+      if (userData) {
+        await appwriteService.createUser(profile.$id, {
+          name: data.name,
+          profileImageId: null,
+          state: "",
+          city: "",
+          issuesReported: 0,
+        });
+        dispatch(login(profile));
+        navigate("/home");
+      }
+    } catch (err) {
+      setError(err?.message || "Something went wrong");
     }
-  } catch (err) {
-    setError(err?.message || "Something went wrong");
-  }
-  setLoading(false);
-};
+    setLoading(false);
+  };
 
 
   if (loading) {

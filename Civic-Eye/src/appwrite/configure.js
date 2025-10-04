@@ -87,7 +87,7 @@ export class Services {
 
   async CreateIssue(
     IssueId,
-    { title, description, status, location, severity, upvotes }
+    { title, description, status, location, severity, upVotes }
   ) {
     try {
       return await this.databases.createDocument(
@@ -100,7 +100,7 @@ export class Services {
           status,
           location,
           severity,
-          upvotes,
+          upVotes,
         }
       );
     } catch (error) {
