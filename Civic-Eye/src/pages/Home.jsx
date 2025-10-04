@@ -6,13 +6,15 @@ function Home() {
     <main className="flex-grow">
       {/* Hero Section */}
       <section
-        className="flex flex-col items-center justify-center text-center py-20 px-6"
+        className="flex flex-col items-center justify-center text-center py-14 px-6"
         style={{
           background: "linear-gradient(to right, #3D52A0, #7091E6)",
           color: "#EDE8F5",
+          borderBottomLeftRadius: "1rem",
+          borderBottomRightRadius: "1rem",
         }}
       >
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-5">
           CivicEye – Voice of the Citizens
         </h2>
         <p className="text-lg md:text-xl max-w-2xl mb-8 opacity-90">
@@ -22,7 +24,7 @@ function Home() {
         <div className="space-x-4">
           <Link
             to="/report"
-            className="bg-yellow-400 text-blue-900 px-6 py-3 rounded-lg font-semibold shadow hover:bg-yellow-500 transition"
+            className="bg-yellow-300 text-blue-900 px-6 py-3 rounded-lg font-semibold shadow hover:bg-yellow-400 transition"
           >
             Report an Issue
           </Link>
@@ -41,14 +43,14 @@ function Home() {
           How CivicEye Works
         </h3>
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
-          <div className="bg-white border border-[#ADBBDA] rounded-xl p-6 text-center shadow-md hover:shadow-lg transition">
+          <div className="bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition">
             <div className="text-4xl mb-4">📝</div>
             <h4 className="text-xl font-semibold mb-2">Report</h4>
             <p className="text-gray-600">
               Submit civic issues with location, description, and photos.
             </p>
           </div>
-          <div className="bg-white border border-[#ADBBDA] rounded-xl p-6 text-center shadow-md hover:shadow-lg transition">
+          <div className="bg-white  rounded-xl p-6 text-center shadow-md hover:shadow-lg transition">
             <div className="text-4xl mb-4">👍</div>
             <h4 className="text-xl font-semibold mb-2">Vote</h4>
             <p className="text-gray-600">
@@ -56,7 +58,7 @@ function Home() {
               community.
             </p>
           </div>
-          <div className="bg-white border border-[#ADBBDA] rounded-xl p-6 text-center shadow-md hover:shadow-lg transition">
+          <div className="bg-white  rounded-xl p-6 text-center shadow-md hover:shadow-lg transition">
             <div className="text-4xl mb-4">✅</div>
             <h4 className="text-xl font-semibold mb-2">Resolve</h4>
             <p className="text-gray-600">
@@ -72,19 +74,19 @@ function Home() {
           Key Features
         </h3>
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
-          <div className="p-6 border-l-4 border-[#3D52A0] bg-gray-50 rounded-md shadow-sm">
+          <div className="p-6 border-l-4 border-[#3D52A0] bg-gray-50 rounded-md shadow-md hover:shadow-lg transition">
             <h4 className="text-xl font-semibold mb-2">Transparency</h4>
             <p className="text-gray-600">
               Citizens can see real-time updates on every reported issue.
             </p>
           </div>
-          <div className="p-6 border-l-4 border-yellow-400 bg-gray-50 rounded-md shadow-sm">
+          <div className="p-6 border-l-4 border-yellow-400 bg-gray-50 rounded-md shadow-md hover:shadow-lg transition">
             <h4 className="text-xl font-semibold mb-2">Community First</h4>
             <p className="text-gray-600">
               Issues are prioritized by community votes, not bureaucracy.
             </p>
           </div>
-          <div className="p-6 border-l-4 border-green-500 bg-gray-50 rounded-md shadow-sm">
+          <div className="p-6 border-l-4 border-green-500 bg-gray-50 rounded-md shadow-md hover:shadow-lg transition">
             <h4 className="text-xl font-semibold mb-2">Collaboration</h4>
             <p className="text-gray-600">
               Brings together citizens and government for faster resolutions.
@@ -95,10 +97,12 @@ function Home() {
 
       {/* Call to Action */}
       <section
-        className="py-20 text-center"
+        className="py-10 text-center"
         style={{
           background: "linear-gradient(to right, #3D52A0, #7091E6)",
           color: "#EDE8F5",
+          borderTopLeftRadius: "1rem",
+          borderTopRightRadius: "1rem",
         }}
         id="contact"
       >
@@ -111,7 +115,7 @@ function Home() {
         </p>
         <Link
           to="/auth"
-          className="bg-yellow-400 text-blue-900 px-8 py-4 rounded-lg font-bold shadow hover:bg-yellow-500 transition"
+          className="bg-yellow-300 text-blue-900 px-8 py-4 rounded-lg font-bold shadow hover:bg-yellow-400 transition"
         >
           Get Started
         </Link>
