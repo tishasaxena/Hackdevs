@@ -43,13 +43,6 @@ function Header() {
           >
             Features
           </Link>
-          <Link
-            to="#contact"
-            className="transition-colors duration-200"
-            style={{ color: "#EDE8F5" }}
-          >
-            Contact
-          </Link>
           {isLoggedIn && (
             <Link
               to="/report"

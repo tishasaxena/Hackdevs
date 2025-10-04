@@ -68,7 +68,7 @@ export default function AllIssues() {
                 if (response.documents.length > 0) {
                     setIssues(response.documents);
                 }
-
+                
             } catch (error) {
                 console.error("Error fetching issues:", error);
             }
