@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useEffect,useState } from "react";
+import { authService } from "../appwrite/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch,useSelector } from "react-redux";
+import { login } from "../store/authSlice";
+import { set } from "react-hook-form";
 
 function Home() {
+const authStatus=useSelector((state)=>state.Auth.isLoggedIn);
   return (
     <main className="flex-grow">
       {/* Hero Section */}
@@ -109,12 +116,21 @@ function Home() {
           Be part of the change. Together, let’s make our cities safer, cleaner,
           and better managed.
         </p>
-        <Link
-          to="/auth"
-          className="bg-yellow-400 text-blue-900 px-8 py-4 rounded-lg font-bold shadow hover:bg-yellow-500 transition"
-        >
-          Get Started
-        </Link>
+        {authStatus ?  (
+          <Link
+            to='/report'
+            className="bg-yellow-400 text-blue-900 px-8 py-4 rounded-lg font-bold shadow hover:bg-yellow-500 transition"
+          >
+            Get Started
+          </Link>) : (
+          <Link
+            to="/auth/user/login"
+            className="bg-yellow-400 text-blue-900 px-8 py-4 rounded-lg font-bold shadow hover:bg-yellow-500 transition"
+          >
+            Get Started
+          </Link>
+          )
+        }
       </section>
     </main>
   );

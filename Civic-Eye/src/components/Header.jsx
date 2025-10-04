@@ -3,7 +3,6 @@ import { Menu } from "lucide-react";
 import Logout from "./Logoutbtn";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { login } from "../store/AuthSlice";
 import Login from "./Login";
 function Header() {
   const isLoggedIn = useSelector((state) => state.Auth.isLoggedIn);
@@ -35,7 +34,7 @@ function Header() {
             Home
           </Link>
           <Link
-            to="#features"
+            to="/feature"
             className="transition-colors duration-200"
             style={{ color: "#EDE8F5" }}
           >
@@ -64,7 +63,7 @@ function Header() {
         >
           <Menu size={24} />
         </button>
-        {!isLoggedIn && <Link to="/auth/user/login" className="transition-colors duration-200" style={{ color: "#EDE8F5" }}>Login</Link>}
+        {!isLoggedIn && <Link to="/" className="transition-colors duration-200" style={{ color: "#EDE8F5" }}>Login</Link>}
         {isLoggedIn && <Logout />}
       </div>
     </header>

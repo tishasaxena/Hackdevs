@@ -8,9 +8,13 @@ import AdminLogin from './components/AdminLogin'
 import Signup from './components/Signup'
 import Login from './components/Login'
 import Home from './pages/Home.jsx'
+import Feature from './pages/Feature.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import { Provider } from 'react-redux'
-import Store from './store/Store'
+import Store,{persistor} from './store/Store'
+import AuthLayout from './components/AuthLayout.jsx'
+import { PersistGate } from 'redux-persist/integration/react'
+import Report from './pages/Report.jsx'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -39,13 +43,23 @@ const router = createBrowserRouter([
       },
       {
         path: '/home',
-        element: <Home />,
+        element: <AuthLayout><Home /></AuthLayout>,
+      },
+      {
+        path: '/feature',
+        element: <Feature />,
+      },
+      {
+        path: '/report',
+        element: <AuthLayout><Report /></AuthLayout>,
       }
     ]
   }
 ])
 createRoot(document.getElementById('root')).render(
   <Provider store={Store}>
-    <RouterProvider router={router} />
+    <PersistGate loading={null} persistor={persistor}>
+      <RouterProvider router={router} />
+    </PersistGate>
   </Provider>
 )

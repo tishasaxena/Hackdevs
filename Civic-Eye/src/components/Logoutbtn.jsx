@@ -1,7 +1,7 @@
 import react from 'react'
 import {authService} from '../appwrite/auth'
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../store/AuthSlice';
+import { logout } from '../store/authSlice';
 import { useDispatch } from 'react-redux';
 function Logout() {
     const navigate = useNavigate();
@@ -9,7 +9,7 @@ function Logout() {
     const Submit=async()=>{
         await authService.logout();
         dispatch(logout());
-        navigate('/auth/user/login');
+        navigate('/');
     }
   return(
     <>

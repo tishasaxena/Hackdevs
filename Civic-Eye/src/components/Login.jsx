@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { authService} from '../appwrite/auth';
 import { useDispatch } from 'react-redux';
-import { login } from '../store/AuthSlice';
+import { login } from '../store/authSlice';
 export default function Login() {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
@@ -16,7 +16,7 @@ export default function Login() {
     try {
       const session = await authService.login(data);
       if (session) {
-        const userData = await authService.getUser();
+        const userData = await authService.getCurrentAccount();
         if(userData){
             dispatch(login(userData));
         }
