@@ -17,8 +17,8 @@ export default function Login() {
       const session = await authService.login(data);
       if (session) {
         const userData = await authService.getCurrentAccount();
-        if(userData){
-            dispatch(login(userData));
+        if (userData) {
+          dispatch(login(userData));
         }
         navigate("/home");
       }
