@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { authService } from '../appwrite/auth';
 import { useDispatch } from 'react-redux';
 import { login } from '../store/authSlice';
+import { appwriteService } from '../appwrite/configure';
 export default function Login() {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
@@ -17,8 +18,9 @@ export default function Login() {
       const session = await authService.login(data);
       if (session) {
         const userData = await authService.getCurrentAccount();
+        console.log("Logged in user data:", userData);
         if(userData){
-            dispatch(login(userData));
+          dispatch(login(userData));
         }
         navigate("/home");
       }

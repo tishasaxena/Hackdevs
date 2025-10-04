@@ -9,6 +9,7 @@ import Signup from './components/Signup'
 import Login from './components/Login'
 import Home from './pages/Home.jsx'
 import Feature from './pages/Feature.jsx'
+import Profile from './pages/profile.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import { Provider } from 'react-redux'
 import Store,{persistor} from './store/Store'
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/home',
-        element: <AuthLayout><Home /></AuthLayout>,
+        element: <Home />,
       },
       {
         path: '/feature',
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: '/report',
         element: <AuthLayout><Report /></AuthLayout>,
+      },
+      {
+        path:'/profile',
+        element:<AuthLayout><Profile/></AuthLayout>
       }
     ]
   }

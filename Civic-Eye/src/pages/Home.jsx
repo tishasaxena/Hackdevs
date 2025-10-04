@@ -9,6 +9,8 @@ import { set } from "react-hook-form";
 
 function Home() {
 const authStatus=useSelector((state)=>state.Auth.isLoggedIn);
+const user=useSelector((state)=>state.Auth.user);
+console.log("User data in Home:", user);
   return (
     <main className="flex-grow">
       {/* Hero Section */}
@@ -128,7 +130,7 @@ const authStatus=useSelector((state)=>state.Auth.isLoggedIn);
             Get Started
           </Link>) : (
           <Link
-            to="/auth/user/login"
+            to="/"
             className="bg-yellow-400 text-blue-900 px-8 py-4 rounded-lg font-bold shadow hover:bg-yellow-500 transition"
           >
             Get Started

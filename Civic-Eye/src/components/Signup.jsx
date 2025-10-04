@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { authService } from "../appwrite/auth";
 import { useDispatch } from "react-redux";
 import { login } from "../store/authSlice";
-
+import { appwriteService } from "../appwrite/configure";
 export default function Signup() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -46,20 +46,28 @@ export default function Signup() {
   }, [passwordValue, confirmPasswordValue, trigger]);
 
   const createAccount = async (data) => {
-    setLoading(true);
-    setError("");
-    try {
-      const userData = await authService.createAccount(data);
-      if (userData) {
-        const currentUser = await authService.getCurrentAccount();
-        dispatch(login(currentUser));
-        navigate("/home");
-      }
-    } catch (err) {
-      setError(err?.message || "Something went wrong");
+  setLoading(true);
+  setError("");
+  try {
+    const userData = await authService.createAccount(data);
+     const profile=await authService.getCurrentAccount();
+    if (userData) {
+         await appwriteService.createUser(profile.$id, {
+        name: data.name,
+        profileImageId: null,
+        state: "",
+        city: "",
+        issuesReported: 0,
+      });
+      dispatch(login(profile));
+      navigate("/home");
     }
-    setLoading(false);
-  };
+  } catch (err) {
+    setError(err?.message || "Something went wrong");
+  }
+  setLoading(false);
+};
+
 
   if (loading) {
     return (

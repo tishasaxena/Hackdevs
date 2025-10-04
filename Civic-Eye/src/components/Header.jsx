@@ -57,14 +57,22 @@ function Header() {
           >
             Contact
           </Link>
-
+          {isLoggedIn && (
+            <Link
+              to="/profile"
+              className="transition-colors duration-200"
+              style={{ color: "#EDE8F5" }}
+            >
+              Profile
+            </Link>
+          )}
         </nav>
 
         {/* Auth Buttons */}
         <div className="flex items-center gap-4">
           {!isLoggedIn ? (
             <Link
-              to="/auth/user/login"
+              to="/"
               className="px-4 py-2 rounded-md font-semibold bg-yellow-300 text-blue-800 hover:bg-yellow-400 transition"
             >
               Login
@@ -73,7 +81,6 @@ function Header() {
             <Logout />
           )}
         </div>
-
         {/* Mobile Menu */}
         <button
           className="md:hidden p-2 rounded-md hover:bg-blue-800 transition"

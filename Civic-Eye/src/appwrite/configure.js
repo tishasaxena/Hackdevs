@@ -60,13 +60,13 @@ export class Services {
     }
   }
 
-  async getCurrentUserProfile() {
+  async getCurrentUserProfile(userId) {
     try {
       const user = await this.account.get();
       const profile = await this.databases.getDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        user.$id
+        userId
       );
       return { ...user, ...profile };
     } catch (error) {
