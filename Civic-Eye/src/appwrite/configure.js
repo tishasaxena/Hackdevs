@@ -110,7 +110,7 @@ export class Services {
 
   async UpdateIssue(
     IssueId,
-    { title, description, status, location, severity,upVotes}
+    { title, description, status, location, severity, upVotes }
   ) {
     try {
       return await this.databases.updateDocument(
@@ -123,7 +123,7 @@ export class Services {
           status,
           location,
           severity,
-          upVotes
+          upVotes,
         }
       );
     } catch (error) {
