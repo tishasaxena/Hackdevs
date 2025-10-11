@@ -17,6 +17,7 @@ import AuthLayout from './components/AuthLayout.jsx'
 import { PersistGate } from 'redux-persist/integration/react'
 import Report from './pages/Report.jsx'
 import AllIssues from './components/AllIssues.jsx'
+import Issue from './pages/Issue.jsx'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -64,7 +65,10 @@ const router = createBrowserRouter([
         path: '/profile',
         element: <AuthLayout><Profile /></AuthLayout>
       },
-
+     {
+      path:"/issue/:id",
+      element:<Issue/>
+     }
     ]
   }
 ])

@@ -2,8 +2,9 @@ import React from 'react';
 import IssueCard from './IssueCard';
 import { useState, useEffect } from 'react';
 import { appwriteService } from '../appwrite/configure';
-
+import { useNavigate } from 'react-router';
 export default function AllIssues() {
+    const navigate=useNavigate();
     const [issues, setIssues] = useState([
         {
             $id: '1',
@@ -88,6 +89,7 @@ export default function AllIssues() {
                     {issues.map((issue) => (
                         <IssueCard
                             key={issue.$id}
+                            id={issue.$id}
                             title={issue.title}
                             description={issue.description}
                             status={issue.status}

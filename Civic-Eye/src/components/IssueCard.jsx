@@ -1,7 +1,8 @@
 import React from "react";
-
-const IssueCard = ({ title, description, status, location, severity, upvotes }) => {
+import { Link } from "react-router";
+const IssueCard = ({id ,title, description, status, location, severity, upvotes }) => {
     return (
+        <Link to={`/issue/${id}`}>
         <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-5 w-full max-w-sm border border-gray-200">
             {/* Title */}
             <h2 className="text-xl font-bold text-gray-800 mb-2">{title}</h2>
@@ -26,10 +27,12 @@ const IssueCard = ({ title, description, status, location, severity, upvotes }) 
             </div>
 
             {/* Action Button */}
+
             <button className="w-full bg-blue-600 text-white rounded-lg py-2 px-4 hover:bg-blue-700 transition-colors">
-                Upvote
+                Open
             </button>
         </div>
+        </Link>
     );
 };
 
