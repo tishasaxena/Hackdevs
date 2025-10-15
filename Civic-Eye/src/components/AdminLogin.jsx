@@ -2,7 +2,7 @@ import React from "react";
 import Signup from "./Signup";
 function AdminLogin() {
   return <div>
-    <Signup />
+    <Signup Role={Boolean("true")}/>
   </div>;
 }
 

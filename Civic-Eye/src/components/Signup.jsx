@@ -5,7 +5,7 @@ import { authService } from "../appwrite/auth";
 import { useDispatch } from "react-redux";
 import { login } from "../store/AuthSlice";
 import { appwriteService } from "../appwrite/configure";
-export default function Signup() {
+export default function Signup(Role) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
@@ -58,6 +58,7 @@ export default function Signup() {
           state: "",
           city: "",
           issuesReported: 0,
+          role:Role
         });
         dispatch(login(profile));
         navigate("/home");

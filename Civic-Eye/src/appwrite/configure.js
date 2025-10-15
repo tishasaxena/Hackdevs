@@ -18,7 +18,7 @@ export class Services {
 
   async createUser(
     userId,
-    { name, profileImageId, state, city, issuesReported }
+    { name, profileImageId, state, city, issuesReported,role}
   ) {
     try {
       return await this.databases.createDocument(
@@ -31,10 +31,11 @@ export class Services {
           state,
           city,
           issuesReported,
+          role: role.Role
         }
       );
     } catch (error) {
-      console.error("Error creating user:", error);
+      console.error("role:",role.Role,"Error creating user:", error);
     }
   }
 

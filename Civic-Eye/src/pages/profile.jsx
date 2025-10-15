@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { appwriteService } from "../appwrite/configure";
 import { useSelector } from "react-redux";
+import { Role } from "appwrite";
 
 function Profile() {
   const [userProfile, setUserProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState("");
+  const [role,setRole]=useState("");
 
   const currentUser = useSelector((state) => state.Auth.user);
 
@@ -28,6 +30,12 @@ function Profile() {
         );
         setUserProfile(profile);
         reset(profile);
+        if(profile.role){
+          setRole("Admin");
+        }
+        else{
+          setRole("Citizen");
+        }
       } catch (err) {
         console.error("Error fetching profile:", err);
         setMessage("⚠️ Failed to load profile.");
@@ -123,6 +131,11 @@ function Profile() {
                 isEditing={isEditing}
                 register={register("city")}
                 value={userProfile.city}
+              />
+              <ProfileField
+                label="Role"
+                register={register("role")}
+                value={role}
               />
             </div>
 
