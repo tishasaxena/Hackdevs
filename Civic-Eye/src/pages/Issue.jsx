@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { appwriteService } from "../appwrite/configure";
-
+import { useSelector } from "react-redux";
 function Issue() {
   const { id } = useParams();
   const [issue, setIssue] = useState(null);
   const [loading, setLoading] = useState(true);
   const [vote,setVote]=useState(0);
+  const [status,setStatus]=useState("Pending");
+  const user=useSelector((state)=>state.Auth.user);
+  const [role,setRole]=useState(false);
   useEffect(() => {
     const fetchIssue = async () => {
       try {
+        const userdata=await appwriteService.getCurrentUserProfile(user.$id);
+        setRole(userdata.role);
         const data = await appwriteService.GetIssue(id);
         setIssue(data);
        setVote(data.upVotes);
@@ -22,6 +27,19 @@ function Issue() {
     fetchIssue();
   }, [id]);
 const updateIssue=async()=>{
+ if(role){
+  setStatus("Completed");
+  const data = await appwriteService.UpdateIssue(id, {
+     title: issue.title,
+     description: issue.description,
+     status: "Completed",
+     location: issue.location,
+     severity: issue.severity,
+     upVotes: vote
+   });
+   setIssue(data);
+ }
+ else{
     setVote(vote+1);
    const data = await appwriteService.UpdateIssue(id, {
      title: issue.title,
@@ -32,6 +50,7 @@ const updateIssue=async()=>{
      upVotes: vote + 1
    });
    setIssue(data);
+  }
 }
   if (loading) {
     return (
@@ -61,7 +80,7 @@ const updateIssue=async()=>{
             className={`px-3 py-1 rounded-full text-sm font-semibold ${
               issue.status === "open"
                 ? "bg-yellow-200 text-yellow-800"
-                : issue.status === "resolved"
+                : issue.status === "Completed"
                 ? "bg-green-200 text-green-800"
                 : "bg-red-200 text-red-800"
             }`}
@@ -86,13 +105,23 @@ const updateIssue=async()=>{
           </p>
         </div>
 
-        {/* Upvote button */}
-        <button
-          onClick={updateIssue} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full transition-colors duration-200"
-        >
-          Upvote
-        </button>
-      </div>
+  {/* Upvote / Mark Completed button */}
+  {role ? (
+    <button
+      onClick={updateIssue}
+      className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-full transition-colors duration-200"
+    >
+      Mark Completed
+    </button>
+  ) : (
+    <button
+      onClick={updateIssue}
+      className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full transition-colors duration-200"
+    >
+      Upvote
+    </button>
+  )}
+</div>
     </div>
   );
 }
