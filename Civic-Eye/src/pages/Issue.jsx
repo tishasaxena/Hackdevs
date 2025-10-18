@@ -10,6 +10,7 @@ function Issue() {
   const [status,setStatus]=useState("Pending");
   const user=useSelector((state)=>state.Auth.user);
   const [role,setRole]=useState(false);
+  const [clicked,setClicked]=useState(false);
   useEffect(() => {
     const fetchIssue = async () => {
       try {
@@ -27,6 +28,8 @@ function Issue() {
     fetchIssue();
   }, [id]);
 const updateIssue=async()=>{
+if(clicked)return;
+setClicked(true);
  if(role){
   setStatus("Completed");
   const data = await appwriteService.UpdateIssue(id, {
