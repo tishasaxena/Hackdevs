@@ -21,28 +21,28 @@ import Issue from './pages/Issue.jsx'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <App />,// Maybe it is better to fix the root page to home as app should also be wrapped around authlayout to fix the issue 
     children: [
       {
-        path: '/',
-        element: <AuthPage />,
+        path: '/',// Auth layout is not fixing the user is still able to bypass to the auth page even after logging in
+        element: <AuthLayout><AuthPage/></AuthLayout>,
       }
       ,
       {
         path: '/auth/user',
-        element: <UserLogin />,
+        element: <AuthLayout><UserLogin /></AuthLayout>,
       },
       {
         path: '/auth/admin',
-        element: <AdminLogin />,
+        element: <AuthLayout><AdminLogin /></AuthLayout>,
       },
       {
         path: '/auth/user/signup',
-        element: <Signup />,
+        element: <AuthLayout><Signup /></AuthLayout>,
       },
       {
         path: '/auth/user/login',
-        element: <Login />,
+        element: <AuthLayout><Login /></AuthLayout>,
       },
       {
         path: '/home',
